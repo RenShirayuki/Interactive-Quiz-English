@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz: Offering Help & Service (SMK Class X)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c7d2fe;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #818cf8;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation / Header -->
+    <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700/60 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-hand-holding-heart text-white text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">English Quiz SMK</h1>
+                    <p class="text-xs text-indigo-400 font-medium">Fase E (Kelas X) • Offering Help & Service</p>
+                </div>
+            </div>
+            
+            <div id="quiz-status-bar" class="hidden flex items-center space-x-4">
+                <div class="bg-slate-700/60 px-3 py-1.5 rounded-lg border border-slate-600 text-xs sm:text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-trophy text-amber-400"></i>
+                    <span>Score: <span id="current-score" class="text-amber-400">0</span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
+
+        <!-- WELCOME SCREEN -->
+        <div id="welcome-screen" class="bg-slate-800 border border-slate-700/80 rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6 transition-all duration-300">
+            <div class="text-center space-y-3">
+                <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    Vocational High School Curriculum
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Interactive Assessment: Offering Help & Service</h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    Uji pemahamanmu dalam mengidentifikasi, menggunakan, serta merespons ungkapan menawarkan bantuan dan pelayanan dalam situasi kehidupan sehari-hari dan dunia kerja (Hospitality, IT, Office, Shop, etc.).
+                </p>
+            </div>
+
+            <!-- Quiz Info Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4">
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 text-center">
+                    <div class="text-indigo-400 text-xl font-bold mb-1"><i class="fa-solid fa-list-check"></i> 25</div>
+                    <div class="text-xs text-slate-400">Total Soal</div>
+                </div>
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 text-center">
+                    <div class="text-amber-400 text-xl font-bold mb-1"><i class="fa-solid fa-stopwatch"></i> 30s</div>
+                    <div class="text-xs text-slate-400">Timer per Soal</div>
+                </div>
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 text-center">
+                    <div class="text-emerald-400 text-xl font-bold mb-1"><i class="fa-solid fa-layer-group"></i> 3 Level</div>
+                    <div class="text-xs text-slate-400">Easy, Medium, HOTS</div>
+                </div>
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 text-center">
+                    <div class="text-cyan-400 text-xl font-bold mb-1"><i class="fa-solid fa-comments"></i> Context</div>
+                    <div class="text-xs text-slate-400">Dunia Kerja & Harian</div>
+                </div>
+            </div>
+
+            <!-- Learning Objectives Summary -->
+            <div class="bg-slate-900/40 rounded-xl p-4 border border-slate-700/40">
+                <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye text-indigo-400"></i> Tujuan Pembelajaran
+                </h3>
+                <ul class="text-xs sm:text-sm text-slate-400 space-y-1 list-disc list-inside">
+                    <li>Mengidentifikasi & memahami fungsi sosial ungkapan menawarkan bantuan/jasa.</li>
+                    <li>Menggunakan ekspresi offering help/service secara tepat sesuai konteks kerja & harian.</li>
+                    <li>Merespons tawaran bantuan (accepting/declining) dengan sopan dan komunikatif.</li>
+                </ul>
+            </div>
+
+            <!-- Start Quiz Button -->
+            <div class="pt-2 text-center">
+                <button id="start-btn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-base flex items-center justify-center gap-3 mx-auto">
+                    <span>Mulai Quiz Sekarang</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- QUIZ CONTAINER SCREEN -->
+        <div id="quiz-screen" class="hidden flex-col gap-5">
+            
+            <!-- Progress Bar & Question Stats Header -->
+            <div class="bg-slate-800 border border-slate-700/80 rounded-2xl p-4 shadow-lg space-y-3">
+                <div class="flex justify-between items-center text-xs sm:text-sm font-semibold">
+                    <div class="flex items-center gap-2">
+                        <span id="question-number-badge" class="px-2.5 py-1 bg-indigo-500/20 text-indigo-300 rounded-md border border-indigo-500/30">
+                            Question 1 / 25
+                        </span>
+                        <span id="difficulty-badge" class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider">
+                            Easy
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-2 text-amber-400">
+                        <i class="fa-solid fa-clock animate-pulse"></i>
+                        <span id="timer-text" class="font-mono text-base font-bold">30s</span>
+                    </div>
+                </div>
+
+                <!-- Timer Progress Bar -->
+                <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-700/50">
+                    <div id="timer-bar" class="bg-gradient-to-r from-indigo-500 to-amber-400 h-2.5 rounded-full transition-all duration-1000 ease-linear w-full"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-slate-800 border border-slate-700/80 rounded-2xl p-5 sm:p-7 shadow-xl space-y-6">
+                
+                <!-- Category / Context Badge -->
+                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
+                    <div id="context-badge" class="text-xs font-semibold text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-indigo-400"></i>
+                        <span>Context: General</span>
+                    </div>
+                    <div id="question-type-badge" class="text-xs font-medium text-slate-400 italic">
+                        Dialogue Completion
+                    </div>
+                </div>
+
+                <!-- Dialogue / Situation Box (If available) -->
+                <div id="scenario-box" class="hidden bg-slate-900/90 rounded-xl p-4 border border-indigo-500/20 font-sans text-sm sm:text-base leading-relaxed text-slate-200">
+                    <!-- Scenario text inserted dynamically -->
+                </div>
+
+                <!-- Question Text -->
+                <h3 id="question-text" class="text-base sm:text-xl font-bold text-white leading-snug">
+                    Question text will appear here...
+                </h3>
+
+                <!-- Options List -->
+                <div id="options-container" class="grid grid-cols-1 gap-3">
+                    <!-- Option buttons will be generated by JavaScript -->
+                </div>
+
+                <!-- Feedback Section (Hidden initially) -->
+                <div id="feedback-box" class="hidden rounded-xl p-4 border transition-all duration-300">
+                    <div class="flex items-start gap-3">
+                        <div id="feedback-icon" class="text-2xl mt-0.5"></div>
+                        <div class="space-y-1">
+                            <h4 id="feedback-title" class="font-bold text-sm sm:text-base"></h4>
+                            <p id="feedback-explanation" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button Container -->
+                <div class="flex justify-end pt-2 border-t border-slate-700/60">
+                    <button id="next-btn" disabled class="px-6 py-3 bg-slate-700 text-slate-400 font-semibold rounded-xl transition-all flex items-center gap-2 cursor-not-allowed">
+                        <span>Lanjut ke Soal Berikutnya</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT & EVALUATION SCREEN -->
+        <div id="result-screen" class="hidden bg-slate-800 border border-slate-700/80 rounded-2xl p-6 sm:p-10 shadow-2xl space-y-8">
+            <div class="text-center space-y-3">
+                <div id="result-icon-container" class="w-20 h-20 mx-auto rounded-full bg-indigo-500/20 border-2 border-indigo-500 flex items-center justify-center text-3xl text-indigo-400 mb-2">
+                    <i id="result-icon" class="fa-solid fa-award"></i>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Hasil Quiz Anda</h2>
+                <p id="result-feedback-message" class="text-slate-400 text-sm sm:text-base max-w-lg mx-auto">
+                    Kerja bagus! Berikut adalah ringkasan performa Anda dalam kuis ini.
+                </p>
+            </div>
+
+            <!-- Score Cards Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 text-center">
+                    <div id="final-score" class="text-3xl font-extrabold text-amber-400">0</div>
+                    <div class="text-xs text-slate-400 font-medium mt-1">Total Skor</div>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 text-center">
+                    <div id="final-percentage" class="text-3xl font-extrabold text-indigo-400">0%</div>
+                    <div class="text-xs text-slate-400 font-medium mt-1">Akurasi</div>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 text-center">
+                    <div id="final-correct" class="text-3xl font-extrabold text-emerald-400">0</div>
+                    <div class="text-xs text-slate-400 font-medium mt-1">Jawaban Benar</div>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 text-center">
+                    <div id="final-wrong" class="text-3xl font-extrabold text-rose-400">0</div>
+                    <div class="text-xs text-slate-400 font-medium mt-1">Jawaban Salah</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                <button id="restart-btn" class="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Coba Lagi (Restart Quiz)</span>
+                </button>
+                <button id="toggle-key-btn" class="px-6 py-3.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold rounded-xl transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-key text-amber-400"></i>
+                    <span>Lihat Kunci Jawaban & Pembahasan Guru</span>
+                </button>
+            </div>
+
+            <!-- TEACHER ANSWER KEY & EXPLANATIONS SECTION -->
+            <div id="answer-key-section" class="hidden space-y-4 border-t border-slate-700/80 pt-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chalkboard-user text-indigo-400"></i>
+                        Kunci Jawaban & Pembahasan Lengkap Guru
+                    </h3>
+                    <span class="text-xs bg-slate-700 px-2.5 py-1 rounded-md text-slate-300">25 Soal</span>
+                </div>
+                
+                <div id="answer-key-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800/40 border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        <p>Interactive English Quiz • SMK Kelas X (Fase E) • Material: Offering Help and Service</p>
+    </footer>
+
+    <!-- QUIZ DATA & APPLICATION LOGIC -->
+    <script>
+        // QUESTION BANK (25 Questions)
+        // Easy: 8, Medium: 12, HOTS: 5
+        const quizData = [
+            // EASY (1-8)
+            {
+                id: 1,
+                difficulty: "Easy",
+                context: "School Library",
+                type: "Identifying Expressions",
+                scenario: null,
+                question: "Which of the following expressions is used to offer help politely?",
+                options: [
+                    "Can I give you a hand?",
+                    "Can you help me right now?",
+                    "I need your assistance, please.",
+                    "Would you mind helping me?"
+                ],
+                answer: 0,
+                explanation: "'Can I give you a hand?' adalah ekspresi baku untuk menawarkan bantuan kepada orang lain. Opsi B, C, dan D adalah ekspresi untuk meminta bantuan (asking for help)."
+            },
+            {
+                id: 2,
+                difficulty: "Easy",
+                context: "Daily School Life",
+                type: "Dialogue Completion",
+                scenario: "Siti: \"This box is too heavy for me to carry.\"\nRani: \"... I'll bring it to the classroom for you.\"",
+                question: "What is the most suitable expression to complete the dialogue?",
+                options: [
+                    "Would you help me?",
+                    "Can I help you with that?",
+                    "I am sorry to hear that.",
+                    "You should buy a new box."
+                ],
+                answer: 1,
+                explanation: "Rani menawarkan bantuan karena melihat Siti kesulitan membawa kotak berat. Kalimat 'Can I help you with that?' sangat tepat diikuti janji membawakannya ke kelas."
+            },
+            {
+                id: 3,
+                difficulty: "Easy",
+                context: "Supermarket",
+                type: "Accepting Offers",
+                scenario: "Shopkeeper: \"May I help you find the fresh milk, ma'am?\"\nCustomer: \"... That would be very helpful. Thank you.\"",
+                question: "Which phrase best completes the customer's response to ACCEPT the offer?",
+                options: [
+                    "No, thanks.",
+                    "I don't need it.",
+                    "Yes, please.",
+                    "I can do it myself."
+                ],
+                answer: 2,
+                explanation: "Ungkapan 'Yes, please' digunakan untuk menerima tawaran bantuan (accepting an offer) secara sopan sebelum mengucapkan terima kasih."
+            },
+            {
+                id: 4,
+                difficulty: "Easy",
+                context: "School Yard",
+                type: "Declining Offers",
+                scenario: "Budi: \"Shall I carry your laptop bag, Doni?\"\nDoni: \"... I can manage it myself.\"",
+                question: "Which expression is appropriate to DECLINE the offer politely?",
+                options: [
+                    "No, thank you.",
+                    "Yes, of course.",
+                    "That'd be great!",
+                    "Please do it."
+                ],
+                answer: 0,
+                explanation: "Untuk menolak tawaran bantuan dengan sopan (declining an offer), kita menggunakan 'No, thank you' yang dilanjutkan dengan alasan 'I can manage it myself'."
+            },
+            {
+                id: 5,
+                difficulty: "Easy",
+                context: "Restaurant",
+                type: "Offering Service",
+                scenario: "Waiter: \"Good evening, welcome to Crown Restaurant. ...?\"\nGuest: \"Yes, I would like a table for two, please.\"",
+                question: "What is the best expression for the waiter to offer service?",
+                options: [
+                    "What are you doing here?",
+                    "How may I assist you tonight?",
+                    "Will you help me clean this table?",
+                    "Do you want to pay now?"
+                ],
+                answer: 1,
+                explanation: "'How may I assist you tonight?' adalah ungkapan standar profesional yang digunakan oleh pelayan restoran/hotel untuk menawarkan jasa (offering service)."
+            },
+            {
+                id: 6,
+                difficulty: "Easy",
+                context: "General",
+                type: "Social Function",
+                question: "What is the main social function of the expression 'Is there anything I can do for you?'",
+                options: [
+                    "To ask someone for a favor or help.",
+                    "To offer assistance or service to someone.",
+                    "To refuse an invitation from a friend.",
+                    "To give instructions on how to do a task."
+                ],
+                answer: 1,
+                explanation: "Fungsi sosial utama dari kalimat 'Is there anything I can do for you?' adalah untuk menawarkan bantuan atau pelayanan (to offer assistance or service)."
+            },
+            {
+                id: 7,
+                difficulty: "Easy",
+                context: "IT Workshop",
+                type: "Dialogue Completion",
+                scenario: "Technician: \"Would you like me to check your computer's RAM as well?\"\nClient: \"..., thank you. It has been running very slowly lately.\"",
+                question: "Choose the correct phrase to complete the client's acceptance:",
+                options: [
+                    "I don't think so",
+                    "Sure, I'd appreciate it",
+                    "No, don't touch it",
+                    "I can check it tomorrow"
+                ],
+                answer: 1,
+                explanation: "'Sure, I'd appreciate it' adalah ungkapan yang digunakan untuk menerima tawaran teknisi dengan antusias dan ramah."
+            },
+            {
+                id: 8,
+                difficulty: "Easy",
+                context: "Office Administration",
+                type: "Identifying Expressions",
+                question: "Which of the following phrases is NOT an offer of help?",
+                options: [
+                    "Would you like me to print these documents?",
+                    "May I help you organize the files?",
+                    "Could you print these reports for me?",
+                    "Shall I draft the email for you?"
+                ],
+                answer: 2,
+                explanation: "Opsi C 'Could you print these reports for me?' adalah ungkapan meminta bantuan (asking for help), sedangkan opsi A, B, dan D adalah menawarkan bantuan (offering help)."
+            },
+
+            // MEDIUM (9-20)
+            {
+                id: 9,
+                difficulty: "Medium",
+                context: "Hotel Reception",
+                type: "Dialogue Completion",
+                scenario: "Receptionist: \"Welcome to Grand Palace Hotel. ...?\"\nGuest: \"Yes, I have a reservation under the name of Alexander.\"",
+                question: "What is the most formal and appropriate service offer for the receptionist?",
+                options: [
+                    "What do you want here?",
+                    "How may I serve your order?",
+                    "Good morning. How may I help you today?",
+                    "Can you give me your credit card?"
+                ],
+                answer: 2,
+                explanation: "Di lingkungan perhotelan, sapaan 'Good morning. How may I help you today?' adalah standar pelayanan pelanggan (customer service) yang sopan dan profesional."
+            },
+            {
+                id: 10,
+                difficulty: "Medium",
+                context: "School Computer Lab",
+                type: "Situational Question",
+                scenario: "Situation: Your classmate looks confused while operating a graphic design program (Photoshop). You are skilled at it and want to offer help.",
+                question: "What would you say to your classmate?",
+                options: [
+                    "You should learn Photoshop better.",
+                    "Would you like me to show you how to use that tool?",
+                    "Can you show me how to design a poster?",
+                    "Why don't you ask the teacher to fix your design?"
+                ],
+                answer: 1,
+                explanation: "Tawaran yang sopan dan relevan dengan situasi tersebut adalah 'Would you like me to show you how to use that tool?'."
+            },
+            {
+                id: 11,
+                difficulty: "Medium",
+                context: "Customer Service",
+                type: "Appropriate Response",
+                scenario: "Staff: \"Should I send the invoice to your email directly, sir?\"\nCustomer: \"... I already have a printed copy.\"",
+                question: "What is the best polite declining response for the customer?",
+                options: [
+                    "That's very kind of you, but no need.",
+                    "Yes, please send it immediately.",
+                    "I don't care about the invoice.",
+                    "Why would you do that for me?"
+                ],
+                answer: 0,
+                explanation: "Pelanggan menolak karena sudah memiliki salinan cetak. 'That's very kind of you, but no need' adalah ungkapan menolak tawaran dengan sangat sopan."
+            },
+            {
+                id: 12,
+                difficulty: "Medium",
+                context: "Automotive Workshop",
+                type: "Dialogue Completion",
+                scenario: "Mechanic: \"Your motorcycle brake pads are worn out. ...?\"\nCustomer: \"Yes, please replace them with original parts.\"",
+                question: "Fill in the blank with the appropriate offer of service!",
+                options: [
+                    "Do you want me to replace them for you?",
+                    "Can you fix the brake pads yourself?",
+                    "Why didn't you check the brakes before?",
+                    "Should you buy a new motorcycle?"
+                ],
+                answer: 0,
+                explanation: "Mekanik melihat komponen aus dan menawarkan perbaikan: 'Do you want me to replace them for you?'."
+            },
+            {
+                id: 13,
+                difficulty: "Medium",
+                context: "Office Environment",
+                type: "Situational Question",
+                scenario: "Situation: Mr. Hendra is carrying a heavy projector and a stack of files to the meeting room. As a polite vocational student interning there, you want to offer help.",
+                question: "Which statement is the most appropriate?",
+                options: [
+                    "Mr. Hendra, please bring those items to the meeting room.",
+                    "Let me help you carry the projector, Mr. Hendra.",
+                    "Can you carry those files by yourself, sir?",
+                    "You look so tired carrying all those things."
+                ],
+                answer: 1,
+                explanation: "'Let me help you carry the projector, Mr. Hendra' adalah penawaran bantuan yang inisiatif, santun, dan sesuai konteks dunia kerja."
+            },
+            {
+                id: 14,
+                difficulty: "Medium",
+                context: "Restaurant / Cafe",
+                type: "Dialogue Completion",
+                scenario: "Customer: \"Excuse me, this soup is cold.\"\nWaitress: \"I am so sorry about that, sir. ... to reheat it for you?\"",
+                question: "Which modal verb correctly completes the offer?",
+                options: [
+                    "Would you like me",
+                    "May you",
+                    "Do I want",
+                    "Will I mind"
+                ],
+                answer: 0,
+                explanation: "Pola 'Would you like me + to + verb' (Would you like me to reheat it for you?) adalah struktur baku menawarkan tindakan untuk membantu pelanggan."
+            },
+            {
+                id: 15,
+                difficulty: "Medium",
+                context: "School Infirmary (UKS)",
+                type: "Dialogue Completion",
+                scenario: "PMR Member: \"You look pale, Maya. ... bring you a glass of warm tea?\"\nMaya: \"Yes, please. I have a stomachache.\"",
+                question: "Select the most suitable modal verb to offer help:",
+                options: [
+                    "Must I",
+                    "Shall I",
+                    "Should you",
+                    "Would I"
+                ],
+                answer: 1,
+                explanation: "'Shall I...?' digunakan dalam bahasa Inggris formal/semi-formal untuk menawarkan bantuan langsung kepada seseorang (Shall I bring you...?)."
+            },
+            {
+                id: 16,
+                difficulty: "Medium",
+                context: "Retail Store",
+                type: "Identifying Meaning",
+                scenario: "Clerk: \"Is there anything else I can get for you, sir?\"\nCustomer: \"No, I think that's all for today. Thanks!\"",
+                question: "What does the clerk's expression mean?",
+                options: [
+                    "Asking if the customer needs more assistance or items.",
+                    "Requesting the customer to pay at the cashier.",
+                    "Ordering the customer to leave the store.",
+                    "Asking for help to carry the store's products."
+                ],
+                answer: 0,
+                explanation: "'Is there anything else I can get for you?' bertujuannya menanyakan apakah pelanggan memerlukan barang atau bantuan tambahan."
+            },
+            {
+                id: 17,
+                difficulty: "Medium",
+                context: "Airport Check-in Desk",
+                type: "Dialogue Completion",
+                scenario: "Agent: \"Good afternoon. May I see your passport and ticket, please?\"\nPassenger: \"Here they are.\"\nAgent: \"Thank you. ... baggage to check in today?\"",
+                question: "What is the agent offering to assist with?",
+                options: [
+                    "Do you have any",
+                    "Would you like me to check in your",
+                    "Can you carry my",
+                    "Should I buy your"
+                ],
+                answer: 1,
+                explanation: "Petugas menawarkan proses check-in bagasi: 'Would you like me to check in your baggage today?'."
+            },
+            {
+                id: 18,
+                difficulty: "Medium",
+                context: "Electronics Store",
+                type: "Appropriate Response",
+                scenario: "Salesperson: \"Would you like me to wrap this laptop as a gift?\"\nBuyer: \"No, thanks. ...\"",
+                question: "Complete the buyer's response with a logical reason for declining:",
+                options: [
+                    "It's for my personal use anyway.",
+                    "I want you to give me a discount.",
+                    "Please wrap it carefully with blue paper.",
+                    "I don't have enough money to buy it."
+                ],
+                answer: 0,
+                explanation: "Karena laptop untuk pemakaian pribadi ('It's for my personal use anyway'), pembeli menolak secara logis tawaran dibungkus kado."
+            },
+            {
+                id: 19,
+                difficulty: "Medium",
+                context: "School Classroom",
+                type: "Dialogue Completion",
+                scenario: "Teacher: \"The whiteboard is full of notes from the previous class.\"\nStudent: \"... erase it for you, Ma'am?\"\nTeacher: \"Thank you, Farhan. That's very kind of you.\"",
+                question: "Which option best fills the blank?",
+                options: [
+                    "Can you",
+                    "May I",
+                    "Will you",
+                    "Do you mind if I"
+                ],
+                answer: 1,
+                explanation: "'May I erase it for you, Ma'am?' adalah bentuk penawaran bantuan yang sangat sopan (polite offer) dari siswa kepada guru."
+            },
+            {
+                id: 20,
+                difficulty: "Medium",
+                context: "Customer Support (Telecommunication)",
+                type: "Offering Service",
+                scenario: "Caller: \"My Wi-Fi router is blinking red and there's no internet connection.\"\nCS Agent: \"I understand your problem. ... reset your connection from our system?\"",
+                question: "Choose the correct expression:",
+                options: [
+                    "Would you mind if you",
+                    "Can I help you to",
+                    "Do you want me to",
+                    "Shall you"
+                ],
+                answer: 2,
+                explanation: "Struktur 'Do you want me to reset...' tepat digunakan oleh petugas CS ketika menawarkan tindakan teknis untuk mengatasi masalah pelanggan."
+            },
+
+            // HOTS / DIFFICULT (21-25)
+            {
+                id: 21,
+                difficulty: "HOTS",
+                context: "Hotel Front Office",
+                type: "Contextual Analysis",
+                scenario: "A VIP Guest arrives at a 5-star hotel with several heavy bags. The bellboy wants to offer assistance while maintaining high hospitality standards.",
+                question: "Which of the following offers is the MOST appropriate, professional, and formal?",
+                options: [
+                    "Hey, want me to take your bags to your room?",
+                    "Give me your luggage, I will carry it now.",
+                    "Allow me to assist you with your luggage, sir.",
+                    "Do you need help or can you carry those bags?"
+                ],
+                answer: 2,
+                explanation: "Di hotel berbintang 5, ungkapan 'Allow me to assist you with your luggage, sir' menunjukkan tingkat kesopanan (politeness), profesionalisme, dan standar pelayanan tertinggi dibanding opsi lainnya."
+            },
+            {
+                id: 22,
+                difficulty: "HOTS",
+                context: "Office / Business Environment",
+                type: "Pragmatic Understanding",
+                scenario: "Manager: \"I have to present this proposal at 2 PM, but I haven't checked the budget figures yet.\"\nSecretary: \"Shall I review the budget figures for you while you prepare the presentation slides?\"\nManager: \"That would take a huge load off my shoulders! Thank you!\"",
+                question: "What can we infer from the manager's response?",
+                options: [
+                    "The manager declines the secretary's offer because he wants to do it himself.",
+                    "The manager accepts the offer enthusiastically because it greatly helps his workload.",
+                    "The manager feels annoyed that the secretary intervened in his presentation.",
+                    "The manager asks the secretary to cancel the meeting at 2 PM."
+                ],
+                answer: 1,
+                explanation: "Ungkapan idiomatis 'take a huge load off my shoulders' menunjukkan bahwa manajer merasa sangat terbantu dan menerima tawaran sekretaris dengan antusias (accepts enthusiastically)."
+            },
+            {
+                id: 23,
+                difficulty: "HOTS",
+                context: "Culinary & Service Industry",
+                type: "Dialogue Analysis",
+                scenario: "Chef/Owner: \"We are short-staffed in the dining area tonight.\"\nApprentice: \"...\"\nChef: \"That would be wonderful! Go ahead and take tables 4 to 8.\"",
+                question: "Which offer by the apprentice best fits the context and receives the Chef's approval?",
+                options: [
+                    "Would you like me to take orders and serve the guest tables tonight?",
+                    "Should I leave the kitchen and go home early today?",
+                    "Can you ask the guests to wait outside until staff arrives?",
+                    "May I help you cook more dishes in the kitchen?"
+                ],
+                answer: 0,
+                explanation: "Karena masalahnya adalah kekurangan staf di area makan ('dining area'), tawaran yang relevan untuk memecahkan masalah tersebut adalah melayani meja tamu (take orders and serve the guest tables)."
+            },
+            {
+                id: 24,
+                difficulty: "HOTS",
+                context: "Graphic Design Studio",
+                type: "Evaluating Politeness & Context",
+                scenario: "Read the dialogue:\nAris: \"I noticed you are struggling to render this 3D animation before the deadline.\"\nBima: \"Yeah, my laptop graphics card keeps crashing.\"\nAris: \"...\"\nBima: \"Are you serious? That would save my project! Thanks a lot, Aris!\"",
+                question: "Which offer of help makes Bima react with 'Are you serious? That would save my project!'?",
+                options: [
+                    "Why don't you buy a high-end laptop right now?",
+                    "If you want, you can use my workstation computer to render your project.",
+                    "I can tell the client that you failed to finish the animation.",
+                    "Should I teach you how to repair a graphics card?"
+                ],
+                answer: 1,
+                explanation: "Respons 'That would save my project!' terpicu karena Aris memberikan solusi nyata dan sangat membantu, yaitu menyewakan/meminjamkan komputer workstation-nya untuk proses rendering."
+            },
+            {
+                id: 25,
+                difficulty: "HOTS",
+                context: "Customer Relations / Business Context",
+                type: "Critical Thinking",
+                scenario: "Customer: \"I bought this smartphone yesterday, but the battery drains completely in less than an hour.\"\nStore Representative: \"I apologize for the inconvenience, ma'am. Would you like me to replace it with a new unit immediately, or would you prefer a full refund?\"",
+                question: "Analyze the store representative's response. What is the main purpose of offering these two options?",
+                options: [
+                    "To force the customer to buy another expensive smartphone model.",
+                    "To provide flexible service solutions to ensure customer satisfaction and resolve the problem.",
+                    "To delay addressing the customer's complaint until the manager arrives.",
+                    "To prove that the customer misbehaved with the new smartphone."
+                ],
+                answer: 1,
+                explanation: "Memberikan dua pilihan solusi (penggantian unit baru atau refund) dalam layanan pelanggan bertujuan memberikan solusi fleksibel guna menjamin kepuasan pelanggan (customer satisfaction) dan menyelesaikan komplain secara efektif."
+            }
+        ];
+
+        // STATE VARIABLES
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let correctCount = 0;
+        let wrongCount = 0;
+        let selectedOption = null;
+        let timerInterval = null;
+        let timeLeft = 30;
+        const totalQuestions = quizData.length;
+
+        // DOM ELEMENTS
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const quizStatusBar = document.getElementById('quiz-status-bar');
+        
+        const startBtn = document.getElementById('start-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const toggleKeyBtn = document.getElementById('toggle-key-btn');
+        
+        const questionNumberBadge = document.getElementById('question-number-badge');
+        const difficultyBadge = document.getElementById('difficulty-badge');
+        const contextBadge = document.getElementById('context-badge');
+        const questionTypeBadge = document.getElementById('question-type-badge');
+        const timerText = document.getElementById('timer-text');
+        const timerBar = document.getElementById('timer-bar');
+        const currentScoreElem = document.getElementById('current-score');
+        
+        const scenarioBox = document.getElementById('scenario-box');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        
+        const feedbackBox = document.getElementById('feedback-box');
+        const feedbackIcon = document.getElementById('feedback-icon');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackExplanation = document.getElementById('feedback-explanation');
+        
+        const answerKeySection = document.getElementById('answer-key-section');
+        const answerKeyList = document.getElementById('answer-key-list');
+
+        // EVENT LISTENERS
+        startBtn.addEventListener('click', startQuiz);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        restartBtn.addEventListener('click', resetQuiz);
+        toggleKeyBtn.addEventListener('click', toggleAnswerKey);
+
+        // FUNCTIONS
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            quizScreen.classList.add('flex');
+            quizStatusBar.classList.remove('hidden');
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            correctCount = 0;
+            wrongCount = 0;
+            currentScoreElem.textContent = score;
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            // Reset question UI state
+            clearInterval(timerInterval);
+            selectedOption = null;
+            nextBtn.disabled = true;
+            nextBtn.className = "px-6 py-3 bg-slate-700 text-slate-500 font-semibold rounded-xl transition-all flex items-center gap-2 cursor-not-allowed";
+            feedbackBox.classList.add('hidden');
+
+            const currentQ = quizData[currentQuestionIndex];
+
+            // Header Meta Info
+            questionNumberBadge.textContent = `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
+            contextBadge.innerHTML = `<i class="fa-solid fa-briefcase text-indigo-400"></i> Context: ${currentQ.context}`;
+            questionTypeBadge.textContent = currentQ.type;
+
+            // Difficulty Styling
+            difficultyBadge.textContent = currentQ.difficulty;
+            if(currentQ.difficulty === 'Easy') {
+                difficultyBadge.className = "px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+            } else if(currentQ.difficulty === 'Medium') {
+                difficultyBadge.className = "px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30";
+            } else {
+                difficultyBadge.className = "px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30";
+            }
+
+            // Scenario / Dialogue Box
+            if (currentQ.scenario) {
+                scenarioBox.classList.remove('hidden');
+                // Format line breaks for dialogue display
+                scenarioBox.innerHTML = currentQ.scenario.replace(/\n/g, '<br>');
+            } else {
+                scenarioBox.classList.add('hidden');
+            }
+
+            // Question Text
+            questionText.textContent = currentQ.question;
+
+            // Options List Render
+            optionsContainer.innerHTML = '';
+            const labels = ['A', 'B', 'C', 'D'];
+            
+            currentQ.options.forEach((optText, index) => {
+                const optBtn = document.createElement('button');
+                optBtn.type = 'button';
+                optBtn.dataset.index = index;
+                optBtn.className = `option-btn w-full text-left p-4 rounded-xl border border-slate-700/80 bg-slate-900/50 hover:bg-slate-700/50 hover:border-indigo-500/50 transition-all flex items-start gap-3 group text-slate-200 text-sm sm:text-base`;
+                
+                optBtn.innerHTML = `
+                    <span class="opt-label w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 text-xs font-bold flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors text-indigo-300">${labels[index]}</span>
+                    <span class="pt-0.5 leading-snug">${escapeHTML(optText)}</span>
+                `;
+
+                optBtn.addEventListener('click', () => handleOptionSelect(index));
+                optionsContainer.appendChild(optBtn);
+            });
+
+            // Start Timer (30s)
+            startTimer();
+        }
+
+        function startTimer() {
+            timeLeft = 30;
+            timerText.textContent = `${timeLeft}s`;
+            timerBar.style.width = '100%';
+            timerBar.className = "bg-gradient-to-r from-indigo-500 to-amber-400 h-2.5 rounded-full transition-all duration-1000 ease-linear w-full";
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerText.textContent = `${timeLeft}s`;
+                
+                const percent = (timeLeft / 30) * 100;
+                timerBar.style.width = `${percent}%`;
+
+                if (timeLeft <= 10) {
+                    timerBar.className = "bg-rose-500 h-2.5 rounded-full transition-all duration-1000 ease-linear";
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    handleTimeOut();
+                }
+            }, 1000);
+        }
+
+        function handleTimeOut() {
+            // Auto select no answer or reveal correct answer
+            disableAllOptions();
+            const currentQ = quizData[currentQuestionIndex];
+            wrongCount++;
+            
+            showFeedback(false, "Waktu Habis!", `Waktu 30 detik telah habis. Jawaban yang benar adalah opsi (${['A','B','C','D'][currentQ.answer]}): "${currentQ.options[currentQ.answer]}". <br><br><b>Pembahasan:</b> ${currentQ.explanation}`);
+            
+            highlightCorrectOption(currentQ.answer);
+            enableNextButton();
+        }
+
+        function handleOptionSelect(selectedIndex) {
+            if (selectedOption !== null) return; // Prevent double clicks
+            clearInterval(timerInterval);
+            selectedOption = selectedIndex;
+
+            disableAllOptions();
+
+            const currentQ = quizData[currentQuestionIndex];
+            const isCorrect = (selectedIndex === currentQ.answer);
+
+            if (isCorrect) {
+                // Calculate point according to difficulty
+                let points = 4; // 25 questions * 4 = 100
+                score += points;
+                correctCount++;
+                currentScoreElem.textContent = score;
+
+                // Option Styling Correct
+                const selectedBtn = optionsContainer.children[selectedIndex];
+                selectedBtn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-white font-medium transition-all flex items-start gap-3 shadow-md shadow-emerald-500/10";
+                selectedBtn.querySelector('.opt-label').className = "w-7 h-7 rounded-lg bg-emerald-500 text-white text-xs font-bold flex items-center justify-center shrink-0";
+
+                showFeedback(true, "Jawaban Benar! 🎉", `Bagus sekali! <br><br><b>Pembahasan:</b> ${currentQ.explanation}`);
+            } else {
+                wrongCount++;
+                
+                // Option Styling Incorrect
+                const selectedBtn = optionsContainer.children[selectedIndex];
+                selectedBtn.className = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-500/10 text-white font-medium transition-all flex items-start gap-3 shadow-md shadow-rose-500/10";
+                selectedBtn.querySelector('.opt-label').className = "w-7 h-7 rounded-lg bg-rose-500 text-white text-xs font-bold flex items-center justify-center shrink-0";
+
+                // Highlight Correct Option
+                highlightCorrectOption(currentQ.answer);
+
+                showFeedback(false, "Jawaban Kurang Tepat", `Jawaban Anda belum benar. Jawaban yang tepat adalah (${['A','B','C','D'][currentQ.answer]}). <br><br><b>Pembahasan:</b> ${currentQ.explanation}`);
+            }
+
+            enableNextButton();
+        }
+
+        function disableAllOptions() {
+            const buttons = optionsContainer.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-700/50', 'hover:border-indigo-500/50');
+                btn.classList.add('cursor-default', 'opacity-70');
+            });
+        }
+
+        function highlightCorrectOption(correctIndex) {
+            const correctBtn = optionsContainer.children[correctIndex];
+            correctBtn.classList.remove('opacity-70');
+            correctBtn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500/80 bg-emerald-500/15 text-emerald-200 font-medium transition-all flex items-start gap-3";
+            correctBtn.querySelector('.opt-label').className = "w-7 h-7 rounded-lg bg-emerald-500 text-white text-xs font-bold flex items-center justify-center shrink-0";
+        }
+
+        function showFeedback(isCorrect, title, explanationHTML) {
+            feedbackBox.classList.remove('hidden');
+            
+            if (isCorrect) {
+                feedbackBox.className = "rounded-xl p-4 border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 transition-all duration-300";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i>`;
+                feedbackTitle.className = "font-bold text-sm sm:text-base text-emerald-300";
+            } else {
+                feedbackBox.className = "rounded-xl p-4 border bg-rose-950/40 border-rose-500/40 text-rose-200 transition-all duration-300";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400"></i>`;
+                feedbackTitle.className = "font-bold text-sm sm:text-base text-rose-300";
+            }
+
+            feedbackTitle.textContent = title;
+            feedbackExplanation.innerHTML = explanationHTML;
+        }
+
+        function enableNextButton() {
+            nextBtn.disabled = false;
+            nextBtn.className = "px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+            if (currentQuestionIndex === totalQuestions - 1) {
+                nextBtn.querySelector('span').textContent = "Lihat Hasil Akhir";
+            } else {
+                nextBtn.querySelector('span').textContent = "Lanjut ke Soal Berikutnya";
+            }
+        }
+
+        function goToNextQuestion() {
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            quizScreen.classList.remove('flex');
+            quizStatusBar.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('final-percentage').textContent = `${percentage}%`;
+            document.getElementById('final-correct').textContent = correctCount;
+            document.getElementById('final-wrong').textContent = wrongCount;
+
+            const iconContainer = document.getElementById('result-icon-container');
+            const resultIcon = document.getElementById('result-icon');
+            const msgElem = document.getElementById('result-feedback-message');
+
+            if (percentage >= 85) {
+                iconContainer.className = "w-20 h-20 mx-auto rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center text-3xl text-emerald-400 mb-2";
+                resultIcon.className = "fa-solid fa-trophy";
+                msgElem.textContent = "Luar biasa! Kamu telah menguasai materi Offering Help & Service dengan sangat baik untuk konteks SMK & dunia kerja!";
+            } else if (percentage >= 65) {
+                iconContainer.className = "w-20 h-20 mx-auto rounded-full bg-indigo-500/20 border-2 border-indigo-500 flex items-center justify-center text-3xl text-indigo-400 mb-2";
+                resultIcon.className = "fa-solid fa-star";
+                msgElem.textContent = "Kerja bagus! Pemahamanmu sudah baik, namun perhatikan lagi konteks kepraktisan & keformalan dalam menanggapi tawaran.";
+            } else {
+                iconContainer.className = "w-20 h-20 mx-auto rounded-full bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center text-3xl text-amber-400 mb-2";
+                resultIcon.className = "fa-solid fa-book-open-reader";
+                msgElem.textContent = "Tetap semangat! Pelajari kembali materi ekspresi tawaran bantuan, menerima/menolak tawaran, serta konteks pekerjaannya.";
+            }
+
+            renderAnswerKey();
+        }
+
+        function toggleAnswerKey() {
+            if (answerKeySection.classList.contains('hidden')) {
+                answerKeySection.classList.remove('hidden');
+                toggleKeyBtn.querySelector('span').textContent = "Sembunyikan Pembahasan Guru";
+                answerKeySection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                answerKeySection.classList.add('hidden');
+                toggleKeyBtn.querySelector('span').textContent = "Lihat Kunci Jawaban & Pembahasan Guru";
+            }
+        }
+
+        function renderAnswerKey() {
+            answerKeyList.innerHTML = '';
+            const labels = ['A', 'B', 'C', 'D'];
+
+            quizData.forEach((q, idx) => {
+                const item = document.createElement('div');
+                item.className = "bg-slate-900/70 rounded-xl p-4 border border-slate-700/60 text-xs sm:text-sm space-y-2";
+                
+                let scenarioHTML = q.scenario ? `<div class="italic text-slate-400 bg-slate-800/60 p-2.5 rounded-lg mb-2">${q.scenario.replace(/\n/g, '<br>')}</div>` : '';
+
+                item.innerHTML = `
+                    <div class="flex justify-between items-start gap-2 border-b border-slate-700/50 pb-2">
+                        <span class="font-bold text-indigo-400">Soal #${idx + 1} (${q.difficulty})</span>
+                        <span class="text-slate-400 text-xs"><i class="fa-solid fa-tag"></i> ${q.context}</span>
+                    </div>
+                    ${scenarioHTML}
+                    <p class="font-semibold text-slate-200">${q.question}</p>
+                    <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 font-medium">
+                        <i class="fa-solid fa-check-circle mr-1"></i> Kunci Jawaban: (${labels[q.answer]}) ${escapeHTML(q.options[q.answer])}
+                    </div>
+                    <p class="text-slate-300 leading-relaxed text-xs">
+                        <b class="text-amber-400">Pembahasan Guru:</b> ${q.explanation}
+                    </p>
+                `;
+                answerKeyList.appendChild(item);
+            });
+        }
+
+        function resetQuiz() {
+            resultScreen.classList.add('hidden');
+            answerKeySection.classList.add('hidden');
+            toggleKeyBtn.querySelector('span').textContent = "Lihat Kunci Jawaban & Pembahasan Guru";
+            startQuiz();
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
